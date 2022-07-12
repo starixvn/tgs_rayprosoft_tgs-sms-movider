@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+	<RootNamespace>Tgs.Sms.Movider</RootNamespace>
+	<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MessageQueue\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tgs.MessageQueue" Version="1.1.1" />
+	<PackageReference Include="TGS.SmsReceiver" Version="0.0.4-alpha" />
+  </ItemGroup>
+
+</Project>
