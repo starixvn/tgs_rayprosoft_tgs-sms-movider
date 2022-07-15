@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddPlivoRepositories(
+        public static IServiceCollection AddMoviderRepositories(
             this IServiceCollection services,
             Action<IServiceProvider, DbContextOptionsBuilder> dbContextConfigure)
             => services

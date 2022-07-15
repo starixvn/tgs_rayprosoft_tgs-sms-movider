@@ -47,13 +47,20 @@ namespace Tgs.Sms.Movider
 
             services
                 .AddSingleton<MoviderSerializer>()
-                .AddPlivoRepositories(
+                .AddMoviderRepositories(
                 (sp, dbContextBuilder) =>
                 {
                     var config = sp.GetRequiredService<IConfiguration>();
 
                     dbContextBuilder.UseNpgsql(config.GetConnectionString("Tgs"));
                 });
+
+            services.AddMoviderSms((options,sp)=>
+            {
+                var config = sp.GetRequiredService<IConfiguration>();
+                config.GetSection("MoviderSms").Bind(options);
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +79,7 @@ namespace Tgs.Sms.Movider
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
-            });
+            });            
         }
     }
 }
