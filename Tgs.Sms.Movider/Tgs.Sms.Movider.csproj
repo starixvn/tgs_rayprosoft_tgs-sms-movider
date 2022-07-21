@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>977485ed-3c28-40a8-9168-1f7242d342e5</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	  <GlobalNugetConfig>$(UserProfile)\AppData\Roaming\NuGet\NuGet.Config</GlobalNugetConfig>
+	  <GlobalNugetConfig Condition="'$(UserProfile)'==''">$(HOME)/.nuget/NuGet/NuGet.Config</GlobalNugetConfig>
+	  <DockerfileBuildArguments>--build-arg "BuildConfiguration=$(Configuration)" --secret id=nuget,src="$(GlobalNugetConfig)"</DockerfileBuildArguments>
+	  <DockerfileTag Condition="$(DockerfileTag) == ''">sms-movider</DockerfileTag>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+	<PackageReference Include="Tgs.MessageQueue.RabbitMQ" Version="0.0.4" />
+	<PackageReference Include="TGS.SmsReceiver" Version="0.0.4-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tgs.Sms.Movider.Core\Tgs.Sms.Movider.Core.csproj" />
+    <ProjectReference Include="..\Tgs.Sms.Movider.Repositories\Tgs.Sms.Movider.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
